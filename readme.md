@@ -1,5 +1,6 @@
 # Mosaicking and Occlusion Recovery for Fetoscopy
 
+### Warning: Code should be refactored in a next release
 
 ## DIRECTORY GUIDE:
 
