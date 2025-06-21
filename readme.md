@@ -1,83 +1,125 @@
 # Mosaicking and Occlusion Recovery for Fetoscopy
 
-### Warning: Code should be refactored in a next release
+> **⚠️ Warning**: Code should be refactored in a next release
 
-## DIRECTORY GUIDE:
+## Overview
 
-'boxplot_generation_code' contains scripts for the generation of boxplots
+This repository contains the implementation of mosaicking and occlusion recovery algorithms for fetoscopy, developed as part of a thesis project. The project focuses on panoramic image reconstruction and SLAM techniques for medical imaging applications.
 
+## 📁 Directory Structure
 
-'code_examples_tries' (GITIGNORE) contains scripts used as examples or first tries of other codes
-- 'blitting_tries' contains all tries to implement blitting on scatterplot 3D to speed up the kmeans clustering. at the moment the code is not functioning
-- 'code_imported' contains scripts imported from other projects (not via GitHub)
-- 'template_matching_tries' contains tries for template matching
-- 'tries-LoFTR_images' contains pictures of LoFTR demo
+### Core Algorithm Files
 
+- `reconstruction_algorithm_RESNET.py` - Main reconstruction algorithm using ResNet features
+- `reconstruction_algorithm_RESNET_VLAD.py` - Reconstruction with ResNet and VLAD descriptors
+- `reconstruction_algorithm_VGG.py` - Reconstruction algorithm using VGG features
+- `SLAM_LoFTR_new_dataset.py` - SLAM implementation with LoFTR on new dataset
+- `SLAM_LoFTR_simulation.py` - SLAM simulation using LoFTR
+- `SLAM_ORB.py` - SLAM implementation with ORB features
+- `SLAM_SIFT.py` - SLAM implementation with SIFT features
+- `project_robotics.py` - Mosaicking robotic project script
+- `resnetfinal.pth` - Pre-trained ResNet50 weights from FetReg Challenge 2021
 
-'code_Git_imported' contains directories imported from other GitHub repositories
--'exposure_fusion' contains code from Mertens implementation in MATLAB
--'LoFTR' contains code from LoFTR repository
--'SuperPointPretrainedNetwork' contains scripts and weights to run Superpoint demo
--'VGG' contains code for VGG network in pytorch and keras
--'VLAD_master' contains the repository of VLAD
+### 📊 Analysis and Visualization
 
+#### `boxplot_generation_code/`
+Scripts for generating statistical boxplots from experimental data.
 
-'dataset_MICCAI_2020' contains the dataset from MICCAI 2020
-- 'dataset' contains all the frames divided in subfolders
-- 'dataset_videos' contains the reconstructed videos
+#### `statistical_tests/`
+Implementation of statistical tests for validating experimental results.
 
+### 🧪 Experimental Code and Prototypes
 
-'dataset_MICCAI_2020_files' contains the files obtained from dataset MICCAI 2020
-- 'dictionary_file_npy' contains the numpy files that contain the features extracted with VGG from the new dataset and used as descriptors of the images of the new dataset (MICCAI 2020)
-- 'experiment_files' contains the excel files of the experiments performed using MICCAI 2020 dataset
-- 'output_panorama_images' contains the final panoramic images divided in subfolders depending on the experiment
-- 'output_panorama_video' contains the final video of panorama reconstruction divided in subfolders depending on the experiment
-- 'similarity_matrices' contains the entire similarity matrices
-- 'similarity_matrices_rt_gb_9' contains the similarity matrices real time with gaussian blur with kernel 9
-- 'visual_dictionary' contains the dictionaries built with VLAD method divided in subfolders (all files are .pickle)
+#### `code_examples_tries/` *(gitignored)*
+- `blitting_tries/` - Attempts to implement blitting optimization for 3D scatterplot k-means clustering
+- `code_imported/` - Scripts imported from external projects
+- `template_matching_tries/` - Template matching algorithm experiments
+- `tries-LoFTR_images/` - LoFTR demonstration images
 
+### 📚 External Dependencies
 
-'final_dataset' contains the dataset used for the thesis: the frames are divided in subfolders
+#### `code_Git_imported/`
+- `exposure_fusion/` - Mertens exposure fusion implementation (MATLAB)
+- `LoFTR/` - [LoFTR repository](https://github.com/zju3dv/LoFTR)
+- `SuperPointPretrainedNetwork/` - [SuperPoint implementation](https://github.com/magicleap/SuperPointPretrainedNetwork)
+- `VGG/` - VGG network implementations (PyTorch and Keras)
+- `VLAD_master/` - VLAD descriptor repository
 
+### 🗄️ Datasets
 
-'final_dataset_files' contains the files obtained from final dataset
-- 'Boxplot_images' contains boxplot images obtained from data
-- 'boxplots_npy' contains all the .npy files used for boxplot generation
-- 'output_panorama_images' contains the final panoramic images divided in subfolders depending on the experiment
-- 'output_panorama_video' contains the final video of panorama reconstruction divided in subfolders depending on the experiment
-- 'sanity_check_panorama' contains all the test images used to assess the relocalization task
+#### `dataset_MICCAI_2020/`
+- `dataset/` - Frame sequences organized in subfolders
+- `dataset_videos/` - Reconstructed video sequences
 
+#### `final_dataset/`
+Primary dataset used for thesis experiments, with frames organized in subfolders.
 
-'reconstrunction_algorithm_old_code' contains the old code used to perform the thesis tasks
+### 📈 Experimental Results
 
+#### `dataset_MICCAI_2020_files/`
+- `dictionary_file_npy/` - VGG feature descriptors (NumPy format)
+- `experiment_files/` - Experimental results (Excel format)
+- `output_panorama_images/` - Generated panoramic images by experiment
+- `output_panorama_video/` - Panoramic reconstruction videos
+- `similarity_matrices/` - Complete similarity matrices
+- `similarity_matrices_rt_gb_9/` - Real-time similarity matrices with Gaussian blur (kernel size 9)
+- `visual_dictionary/` - VLAD method dictionaries (Pickle format)
 
-'similarity_matrix' contains all the scripts for similarity matrices generation
+#### `final_dataset_files/`
+- `Boxplot_images/` - Statistical visualization outputs
+- `boxplots_npy/` - Data files for boxplot generation
+- `output_panorama_images/` - Final panoramic reconstructions
+- `output_panorama_video/` - Final panoramic videos
+- `sanity_check_panorama/` - Relocalization assessment images
 
+### 🔧 Utilities and Tools
 
-'SLAM_old_code' contains the old SLAM code used to perform the thesis tasks
+#### `utilities/`
+- `code_Bano/` - Implementation of Bano et al. (2020) methods
+- `examples_generation_code/` - Scripts for generating presentation materials
+- `mask_cut/` - MICCAI 2021 dataset masks
 
+#### `similarity_matrix/`
+Scripts for generating and processing similarity matrices.
 
-'statistical_tests' contains all the scripts containing the statistical tests implemented
+### 📜 Legacy Code
 
+#### `reconstrunction_algorithm_old_code/`
+Previous versions of reconstruction algorithms.
 
-'utilities' contains scripts that were run just once at the beginning of the project to reorder the dataset, cut the images, reconstruct dataset videos.
--'code_Bano' contains scripts to reproduce results from Bano work (2020)
--'examples_generation_code' contains the scripts used to generate images or videos used as examples or in the presentations
--'mask_cut' contains all the masks from MICCAI 2021 dataset
+#### `SLAM_old_code/`
+Earlier SLAM implementations.
 
+#### `VGG_old_code/`
+Previous VGG-based feature extraction code.
 
-'VGG_old_code' contains the old VGG code used to perform the thesis tasks
+## 🚀 Getting Started
 
+### Prerequisites
+- Python 3.x
+- PyTorch
+- OpenCV
+- NumPy
+- Additional dependencies as specified in individual script files
 
-## FILES OUTSIDE THE DIRECTORY GUIDE
--'project_robotics.py' is the script from the mosaicking robotic project
--'resnetfinal.pth' contains the weights from the ResNet50 from FetReg Challenge 2021
+### Usage
+Each main algorithm file can be run independently. Refer to individual scripts for specific usage instructions and parameter configurations.
 
-All the other files contain the code of the final thesis:
--'reconstruction_algorithm_RESNET.py'
--'reconstruction_algorithm_RESNET_VLAD.py'
--'reconstruction_algorithm_VGG.py'
--'SLAM_LoFTR_new_dataset.py'
--'SLAM_LoFTR_simulation.py'
--'SLAM_ORB.py'
--'SLAM_SIFT.py'
+## 📖 Research Context
+
+This work focuses on:
+- **Mosaicking**: Creating panoramic views from fetoscopic video sequences
+- **Occlusion Recovery**: Handling visual obstructions in medical imaging
+- **SLAM**: Simultaneous Localization and Mapping for surgical navigation
+- **Feature Matching**: Using various descriptors (LoFTR, SIFT, ORB, VGG, ResNet)
+
+## 📚 References
+
+- MICCAI 2020 Dataset
+- MICCAI 2021 Dataset  
+- FetReg Challenge 2021
+- Bano et al. (2020)
+
+## ⚠️ Development Status
+
+This repository represents research code that requires refactoring for production use. The codebase includes experimental implementations and legacy code that should be cleaned up in future releases. This work was comtribute by @ChiaraLena
